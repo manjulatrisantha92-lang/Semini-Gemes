@@ -1,0 +1,135 @@
+@import "tailwindcss";
+
+@media print {
+  /* High-contrast pure white canvas */
+  html, body {
+    background-color: #ffffff !important;
+    background-image: none !important;
+    color: #000000 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
+    overflow: visible !important;
+  }
+
+  /* 1. Bulletproof Direct Print Portal: When printing via portal, hide everything else completely */
+  body.is-printing-direct > *:not(#print-portal-root) {
+    display: none !important;
+  }
+
+  body.is-printing-direct #print-portal-root {
+    display: block !important;
+    position: static !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 auto !important;
+    padding: 0 !important;
+    background: #ffffff !important;
+    color: #000000 !important;
+    visibility: visible !important;
+  }
+
+  body.is-printing-direct #print-portal-root * {
+    visibility: visible !important;
+    color: #000000 !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  /* A4 Mode within direct print portal */
+  body.is-printing-direct[data-print-mode="a4"] #print-portal-root #printable-bill-target,
+  body.is-printing-direct[data-print-mode="a4"] #print-portal-root #printable-bill-target-system,
+  body.is-printing-direct:not([data-print-mode="thermal"]) #print-portal-root #printable-bill-target,
+  body.is-printing-direct:not([data-print-mode="thermal"]) #print-portal-root #printable-bill-target-system {
+    width: 190mm !important;
+    max-width: 190mm !important;
+    padding: 4mm 6mm !important;
+    margin: 0 auto !important;
+    background: #ffffff !important;
+    color: #000000 !important;
+    border: none !important;
+    box-shadow: none !important;
+  }
+
+  /* 80mm Thermal Mode within direct print portal */
+  body.is-printing-direct[data-print-mode="thermal"] #print-portal-root #printable-bill-target,
+  body.is-printing-direct[data-print-mode="thermal"] #print-portal-root #printable-bill-target-system {
+    width: 76mm !important;
+    max-width: 76mm !important;
+    padding: 1mm 2mm !important;
+    font-size: 11px !important;
+    margin: 0 auto !important;
+    background: #ffffff !important;
+    color: #000000 !important;
+    border: none !important;
+    box-shadow: none !important;
+  }
+
+  /* 2. Standard In-Modal Print Fallback */
+  body:not(.is-printing-direct) .fixed,
+  body:not(.is-printing-direct) .relative,
+  body:not(.is-printing-direct) .overflow-y-auto,
+  body:not(.is-printing-direct) .overflow-hidden {
+    position: static !important;
+    overflow: visible !important;
+    max-height: none !important;
+    height: auto !important;
+    background: transparent !important;
+    backdrop-filter: none !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  /* Hide app buttons, banners, inputs, navigation during standard print */
+  body:not(.is-printing-direct) nav,
+  body:not(.is-printing-direct) header,
+  body:not(.is-printing-direct) button,
+  body:not(.is-printing-direct) input,
+  body:not(.is-printing-direct) .no-print {
+    display: none !important;
+  }
+
+  #printable-bill-target,
+  #printable-a4-report {
+    display: block !important;
+    position: static !important;
+    width: 100% !important;
+    margin: 0 auto !important;
+    background: #ffffff !important;
+    color: #000000 !important;
+    box-shadow: none !important;
+    border: none !important;
+    visibility: visible !important;
+  }
+
+  #printable-a4-certificate {
+    display: block !important;
+    position: static !important;
+    width: 100% !important;
+    max-width: 190mm !important;
+    margin: 0 auto !important;
+    box-shadow: none !important;
+    visibility: visible !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  #printable-bill-target *,
+  #printable-a4-report *,
+  #printable-a4-certificate * {
+    visibility: visible !important;
+    color: #000000 !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  /* Specific Paper Margins */
+  @page {
+    margin: 6mm 6mm;
+  }
+}
+
