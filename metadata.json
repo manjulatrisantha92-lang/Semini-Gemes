@@ -1,0 +1,6 @@
+{
+  "name": "WCS Inventory Invoice",
+  "description": "Comprehensive jewelry, gemstone, and workshop inventory and invoicing management system for Sri Lankan businesses.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
